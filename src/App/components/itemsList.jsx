@@ -8,6 +8,7 @@ const ItemsList = () => {
     return (
       <>
         <div className="m-4">
+          <h1>Беспроводные наушники</h1>
           <div className="card-group row row-cols-4 g-0">
             {items.map((item) => {
               return (
@@ -25,9 +26,9 @@ const ItemsList = () => {
                         className="card-text"
                         style={{ textDecoration: "line-through" }}
                       >
-                        {item.price}
+                        {item.price} ₽
                       </p>
-                      <p className="card-text">{item["new-price"]}</p>
+                      <p className="card-text">{item["new-price"]} ₽</p>
                       <p className="card-text">
                         <small className="text-muted">
                           Курьером 28 декабря
