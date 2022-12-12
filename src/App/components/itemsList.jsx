@@ -9,14 +9,17 @@ const ItemsList = () => {
       <>
         <div className="m-4">
           <h1>Беспроводные наушники</h1>
-          <div className="card-group row row-cols-4 g-0">
+          <div
+            className="card-group row row-cols-4 g-0"
+            style={{ maxWidth: "1400px" }}
+          >
             {items.map((item) => {
               return (
                 <div class="col">
-                  <div className="card h-100">
+                  <div className="card h-100 p-3" style={{ maxWidth: "350px" }}>
                     <img
                       src={item.image}
-                      className="card-img-top"
+                      className="card-img-top mx-auto d-block"
                       alt={item.title}
                       style={{ maxWidth: "200" + "px", maxHeight: "200px" }}
                     ></img>
