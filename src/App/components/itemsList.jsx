@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { fetchAll } from "../api/items";
 
 const ItemsList = () => {
   const [items, setItems] = useState();
+
+  const getData = async (url) => {
+    try {
+      const resp = await fetch(url);
+      const data = await resp.json();
+      setItems(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    setTimeout(() => {
-      setItems(fetchAll());
-    }, 1000);
+    getData("http://localhost:3001/items");
   }, []);
 
   if (items) {
@@ -65,7 +73,7 @@ const ItemsList = () => {
     );
   } else {
     return (
-      <div style={{ display: "inline-block", color: "#ccc" }}>
+      <div className="m-4" style={{ color: "#ccc" }}>
         <div className="spinner-border" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
