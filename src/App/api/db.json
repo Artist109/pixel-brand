@@ -10,10 +10,10 @@
       "new-price": 3000,
       "stock": 10,
       "batteryCapacity": "35 мА ч",
-      "Standby time": "28 ч",
-      "Talk time": "3 ч",
-      "Operating Time": "6 ч",
-      "Charging time": "1 ч",
+      "standby-time": "28 ч",
+      "talk-ime": "3 ч",
+      "operating-time": "6 ч",
+      "charging-time": "1 ч",
       "whishlist": false
     },
     {
@@ -26,10 +26,10 @@
       "new-price": 999,
       "stock": 10,
       "batteryCapacity": "35 мА ч",
-      "Standby time": "28 ч",
-      "Talk time": "3 ч",
-      "Operating Time": "6 ч",
-      "Charging time": "1 ч",
+      "standby-time": "28 ч",
+      "talk-ime": "3 ч",
+      "operating-time": "6 ч",
+      "charging-time": "1 ч",
       "whishlist": false
     },
     {
@@ -42,10 +42,10 @@
       "new-price": 9900,
       "stock": 10,
       "batteryCapacity": "35 мА ч",
-      "Standby time": "28 ч",
-      "Talk time": "3 ч",
-      "Operating Time": "6 ч",
-      "Charging time": "1 ч",
+      "standby-time": "28 ч",
+      "talk-ime": "3 ч",
+      "operating-time": "6 ч",
+      "charging-time": "1 ч",
       "whishlist": false
     },
     {
@@ -58,10 +58,10 @@
       "new-price": 4500,
       "stock": 10,
       "batteryCapacity": "35 мА ч",
-      "Standby time": "28 ч",
-      "Talk time": "3 ч",
-      "Operating Time": "6 ч",
-      "Charging time": "1 ч",
+      "standby-time": "28 ч",
+      "talk-ime": "3 ч",
+      "operating-time": "6 ч",
+      "charging-time": "1 ч",
       "whishlist": false
     },
     {
@@ -74,10 +74,10 @@
       "new-price": 6490,
       "stock": 10,
       "batteryCapacity": "35 мА ч",
-      "Standby time": "28 ч",
-      "Talk time": "3 ч",
-      "Operating Time": "6 ч",
-      "Charging time": "1 ч",
+      "standby-time": "28 ч",
+      "talk-ime": "3 ч",
+      "operating-time": "6 ч",
+      "charging-time": "1 ч",
       "whishlist": false
     },
     {
@@ -90,10 +90,10 @@
       "new-price": 15990,
       "stock": 10,
       "batteryCapacity": "35 мА ч",
-      "Standby time": "28 ч",
-      "Talk time": "3 ч",
-      "Operating Time": "6 ч",
-      "Charging time": "1 ч",
+      "standby-time": "28 ч",
+      "talk-ime": "3 ч",
+      "operating-time": "6 ч",
+      "charging-time": "1 ч",
       "whishlist": false
     },
     {
@@ -106,10 +106,10 @@
       "new-price": 13570,
       "stock": 10,
       "batteryCapacity": "35 мА ч",
-      "Standby time": "28 ч",
-      "Talk time": "3 ч",
-      "Operating Time": "6 ч",
-      "Charging time": "1 ч",
+      "standby-time": "28 ч",
+      "talk-ime": "3 ч",
+      "operating-time": "6 ч",
+      "charging-time": "1 ч",
       "whishlist": false
     },
     {
@@ -122,10 +122,10 @@
       "new-price": 3000,
       "stock": 10,
       "batteryCapacity": "35 мА ч",
-      "Standby time": "28 ч",
-      "Talk time": "3 ч",
-      "Operating Time": "6 ч",
-      "Charging time": "1 ч",
+      "standby-time": "28 ч",
+      "talk-ime": "3 ч",
+      "operating-time": "6 ч",
+      "charging-time": "1 ч",
       "whishlist": false
     }
   ],

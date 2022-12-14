@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { fetchItems } from "../api/items";
+import { fetchAll } from "../api/items";
 
 const ItemsList = () => {
-  const [items, setItems] = useState(fetchItems());
+  const [items, setItems] = useState();
+  useEffect(() => {
+    setTimeout(() => {
+      setItems(fetchAll());
+    }, 1000);
+  }, []);
+
   if (items) {
     return (
       <>
@@ -11,12 +17,16 @@ const ItemsList = () => {
           <h1>Беспроводные наушники</h1>
           <div
             className="card-group row row-cols-4 g-0"
-            style={{ maxWidth: "1400px" }}
+            style={{ maxWidth: "1200px" }}
           >
             {items.map((item) => {
               return (
-                <div class="col">
-                  <div className="card h-100 p-3" style={{ maxWidth: "350px" }}>
+                <div key={item.id} className="col">
+                  <div
+                    key={item.id}
+                    className="card h-100 p-3"
+                    style={{ maxWidth: "350px", border: "none" }}
+                  >
                     <img
                       src={item.image}
                       className="card-img-top mx-auto d-block"
@@ -37,7 +47,11 @@ const ItemsList = () => {
                           Курьером 28 декабря
                         </small>
                       </p>
-                      <a href="#" class="btn btn-primary">
+                      <a
+                        href="#"
+                        className="btn btn-primary"
+                        style={{ width: "100%" }}
+                      >
                         В корзину
                       </a>
                     </div>
@@ -50,7 +64,14 @@ const ItemsList = () => {
       </>
     );
   } else {
-    return <h3>...Загрузка</h3>;
+    return (
+      <div style={{ display: "inline-block", color: "#ccc" }}>
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+        <div>Загрузка...</div>
+      </div>
+    );
   }
 };
 

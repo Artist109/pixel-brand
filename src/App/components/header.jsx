@@ -1,67 +1,68 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="#">
           Pixel-Brand
-        </a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            {/*<li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
+        </Link>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            {/*<li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="#">
                 Каталог
-              </a>
+              </Link>
             </li>*/}
-            <li class="nav-item">
-              <a class="nav-link" href="#">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
                 Главная
-              </a>
+              </Link>
             </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
+            <li className="nav-item dropdown">
+              <Link
+                className="nav-link dropdown-toggle"
+                to="/catalog"
                 id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Каталог
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              </Link>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="#">
                     Action
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="#">
                     Another action
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="#">
                     Something else here
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
                 О нас
-              </a>
+              </Link>
             </li>
           </ul>
-          <form class="d-flex">
+          <form className="d-flex">
             <input
-              class="form-control me-2"
+              className="form-control me-2"
               type="search"
               placeholder="Поиск товаров"
               aria-label="Search"
             ></input>
-            <button class="btn btn-outline-success" type="submit">
+            <button className="btn btn-outline-success" type="submit">
               Найти
             </button>
           </form>
