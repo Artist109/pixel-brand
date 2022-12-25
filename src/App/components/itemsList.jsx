@@ -6,7 +6,7 @@ import { ITEMS_URL } from "../utils/constants/itemsUrl";
 import Item from './item'
 import Loader from "./loader";
 
-const ItemsList = () => {
+const ItemsList = ({match}) => {
   const [items, setItems] = useState();
 
   useEffect(() => {

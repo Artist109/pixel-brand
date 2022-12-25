@@ -1,10 +1,10 @@
 import { Route, Switch, Redirect } from "react-router-dom";
-import About from "./App/layouts/about";
 import Breadcrumbs from "./App/components/breadcrumbs";
 import Header from "./App/components/header";
-import Home from "./App/layouts/home";
 import ItemsList from "./App/components/itemsList";
-import ItemCard from "./App/components/itemCard";
+import About from "./App/layouts/about";
+import Home from "./App/layouts/home";
+
 
 function App() {
   return (
