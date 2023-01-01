@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { fetchData } from "../utils/fetchData";
-import { ITEMS_URL } from "../utils/constants/itemsUrl";
 
-import Item from './item'
 import Loader from "./loader";
+import ItemCard from "./itemCard";
 
-const ItemsList = ({match}) => {
-  const [items, setItems] = useState();
-
-  useEffect(() => {
-    const res = fetchData(ITEMS_URL);
-    res.then(data => setItems(data))
-  }, [console.log('items', items)]);
-
-  const handleAddToCart =(id) => {
-    alert(`Id товара: ${id}`)
-  }
+const ItemsList = ({items, onAdd}) => {
 
   if (items) {
-      return <Item items={items} onAdd={handleAddToCart}/>
+      return <ItemCard items={items} onClick={()=>onAdd}/>
   } else {
     return <Loader/>
   }
