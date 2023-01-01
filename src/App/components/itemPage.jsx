@@ -1,12 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ItemCounter from "./itemCounter";
 
-const ItemPage = ({ match, items, itemsInCart, onAdd }) => {
+const ItemPage = ({
+  match,
+  items,
+  itemCount,
+  itemsInCart,
+  onAdd,
+  onIncrement,
+  onDecrement
+}) => {
+  console.log(
+    "1itemCount",
+    itemCount,
+    "1itemsInCart",
+    itemsInCart,
+    "1onAdd",
+    onAdd,
+    "onIncrement",
+    onIncrement,
+    "onDecrement",
+    onDecrement
+  );
   const itemId = match.params.itemId;
 
   if (items) {
-    console.log("items", Array.isArray(items));
-    items.map((item) => console.log(item));
+    // console.log("items", Array.isArray(items));
+    // items.map((item) => console.log(item));
     const getItem = (itemId) => items.find(({ id }) => String(id) === itemId);
     const item = getItem(itemId);
     return (
@@ -32,19 +53,20 @@ const ItemPage = ({ match, items, itemsInCart, onAdd }) => {
                   {item.price}
                 </span>
                 <span style={{ fontSize: "24px", fontWeight: "bold" }}>
-                  {"   "}
+                  {" "}
                   {item.newPrice}
                 </span>
               </p>
-              {/* {itemsInCart.map()} */}
-              <a
-                href="#"
-                className="btn btn-primary"
-                style={{ width: "100%" }}
-                onClick={() => onAdd(item.id)}
-              >
-                В корзину
-              </a>
+              <ItemCounter
+                {...{
+                  id: item.id,
+                  itemCount,
+                  itemsInCart,
+                  onAdd,
+                  onIncrement,
+                  onDecrement
+                }}
+              />
             </div>
           </div>
           <div className="col-md-8" style={{ marginLeft: "50px" }}>
@@ -80,7 +102,10 @@ ItemPage.propTypes = {
   }),
   items: PropTypes.array,
   itemsInCart: PropTypes.func.isRequired,
-  onAdd: PropTypes.func.isRequired
+  onAdd: PropTypes.func.isRequired,
+  itemCount: PropTypes.number.isRequired,
+  onIncrement: PropTypes.func.isRequired,
+  onDecrement: PropTypes.func.isRequired
 };
 
 export default ItemPage;

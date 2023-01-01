@@ -13,20 +13,30 @@ import Home from "./App/layouts/home";
 
 function App() {
   const [items, setItems] = useState();
-  // const [itemCount, setItemCount] = useState();
-  const [itemsInCart, setItemsInCart] = useState([]);
+  const [itemCount, setItemCount] = useState(0);
+  const [itemsInCart, setItemsInCart] = useState(0);
 
   useEffect(() => {
     const res = fetchData(ITEMS_URL);
     res.then((data) => setItems(data));
-  }, [console.log("items", items)]);
+  }, []);
 
-  // const itemCountIncrement = () => {
-  //   setItemCount(itemCount + 1);
-  // };
+  const handleItemIncrement = () => {
+    setItemCount((prev) => (prev += 1));
+  };
 
-  const handleAddToCart = (id) => {
-    setItemsInCart((prev) => [...prev, id]);
+  const handleItemDecrement = () => {
+    if (itemCount >= 1) {
+      setItemCount((prev) => (prev -= 1));
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (itemCount === 0) {
+      setItemsInCart((prev) => (prev += 1));
+    } else {
+      setItemsInCart((prev) => (prev += itemCount));
+    }
     console.log(itemsInCart);
   };
 
@@ -42,7 +52,10 @@ function App() {
               {...props}
               items={items}
               itemsInCart={itemsInCart}
+              itemCount={itemCount}
               onAdd={handleAddToCart}
+              onIncrement={handleItemIncrement}
+              onDecrement={handleItemDecrement}
             />
           )}
         </Route>
