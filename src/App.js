@@ -14,7 +14,7 @@ import Home from "./App/layouts/home";
 function App() {
   const [items, setItems] = useState();
   const [itemCount, setItemCount] = useState(0);
-  const [itemsInCart, setItemsInCart] = useState(0);
+  const [itemsInCart] = useState(0);
 
   useEffect(() => {
     const res = fetchData(ITEMS_URL);
@@ -33,11 +33,9 @@ function App() {
 
   const handleAddToCart = () => {
     if (itemCount === 0) {
-      setItemsInCart((prev) => (prev += 1));
-    } else {
-      setItemsInCart((prev) => (prev += itemCount));
+      setItemCount((prev) => (prev += 1));
     }
-    console.log(itemsInCart);
+    console.log(itemCount);
   };
 
   return (

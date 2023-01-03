@@ -11,18 +11,7 @@ const ItemPage = ({
   onIncrement,
   onDecrement
 }) => {
-  console.log(
-    "1itemCount",
-    itemCount,
-    "1itemsInCart",
-    itemsInCart,
-    "1onAdd",
-    onAdd,
-    "onIncrement",
-    onIncrement,
-    "onDecrement",
-    onDecrement
-  );
+  console.log("1itemsInCart", itemsInCart);
   const itemId = match.params.itemId;
 
   if (items) {

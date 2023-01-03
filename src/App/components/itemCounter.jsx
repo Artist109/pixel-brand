@@ -9,21 +9,8 @@ const ItemCounter = ({
   onIncrement,
   onDecrement
 }) => {
-  console.log(
-    "id",
-    id,
-    "itemCount",
-    itemCount,
-    "itemsInCart",
-    itemsInCart,
-    "onAdd",
-    typeof onAdd,
-    "onIncrement",
-    onIncrement,
-    "onDecrement",
-    onDecrement
-  );
-  if (itemsInCart) {
+  console.log("itemCount", itemCount);
+  if (itemCount) {
     return (
       <div className="col">
         <button className="btn btn-primary" onClick={() => onDecrement()}>
@@ -40,7 +27,7 @@ const ItemCounter = ({
       <a
         className="btn btn-primary"
         style={{ width: "100%" }}
-        onClick={() => onAdd()}
+        onClick={() => onAdd(id)}
       >
         В корзину
       </a>
