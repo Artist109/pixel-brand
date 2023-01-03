@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import { fetchData } from "./App/utils/fetchData";
+import { paginate } from "./App/utils/paginate";
 import { ITEMS_URL } from "./App/utils/constants/itemsUrl";
 
 import Breadcrumbs from "./App/components/breadcrumbs";
@@ -15,6 +16,9 @@ function App() {
   const [items, setItems] = useState();
   const [itemCount, setItemCount] = useState(0);
   const [itemsInCart] = useState(0);
+  const [currentPage] = useState(1);
+
+  const pageSize = 4;
 
   useEffect(() => {
     const res = fetchData(ITEMS_URL);
@@ -38,6 +42,8 @@ function App() {
     console.log(itemCount);
   };
 
+  // const filteredItems = paginate(items, currentPage, pageSize);
+  // console.log(filteredItems);
   return (
     <>
       <Header />

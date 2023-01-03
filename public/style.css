@@ -1,0 +1,13 @@
+.dropdown-filtration {
+  padding: 15px 4px;
+  height: 50px;
+  width: 120px;
+  border-radius: 3px;
+  border: 1px solid #000;
+}
+
+.dropdown-filtration-item {
+  padding: 15px 4px;
+  text-decoration: none;
+  border: 1px solid rgb(224, 224, 224);
+}

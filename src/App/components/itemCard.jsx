@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import Pagination from "./pagination";
+import Filtration from "./filtration/filtration";
 
 const ItemCard = ({ items, onAdd }) => {
   return (
     <div className="m-4">
       <h1>Беспроводные наушники</h1>
+      <Filtration />
       <div
         className="card-group row row-cols-4 g-0"
         style={{ maxWidth: "1200px" }}
@@ -56,6 +59,7 @@ const ItemCard = ({ items, onAdd }) => {
             </div>
           );
         })}
+        <Pagination />
       </div>
     </div>
   );
