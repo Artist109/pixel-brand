@@ -9,7 +9,6 @@ const Filtration = () => {
         display: "flex",
         marginBottom: "30px",
         maxWidth: "1200px",
-        textAlign: "end",
         justifyContent: "space-between"
       }}
     >

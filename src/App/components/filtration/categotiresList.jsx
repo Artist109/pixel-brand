@@ -1,17 +1,17 @@
 import React from "react";
-import SortBar from "./sortBar";
+// import SortBar from "./sortBar";
 
 const CategoriesList = () => {
   return (
-    <div>
-      <button className="btn" style={{ marginRight: "10px" }}>
+    <div className="categories">
+      <button className="btn category-item" style={{ marginRight: "10px" }}>
         Xiaomi
       </button>
-      <button className="btn">Apple</button>
-      <button className="btn">Marshall</button>
-      <button className="btn">Sony</button>
-      <button className="btn">Huawei</button>
-      <button className="btn">Earldom</button>
+      <button className="btn category-item">Apple</button>
+      <button className="btn category-item">Marshall</button>
+      <button className="btn category-item">Sony</button>
+      <button className="btn category-item">Huawei</button>
+      <button className="btn category-item">Earldom</button>
     </div>
   );
 };
