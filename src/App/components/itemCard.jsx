@@ -1,24 +1,60 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Pagination from "./pagination";
-import Filtration from "./filtration/filtration";
+// import Filtration from "./filtration/filtration";
 import { paginate } from "../utils/paginate";
+import SortBar from "./filtration/sortBar";
+import CategoriesList from "./filtration/categotiresList";
 
 const ItemCard = ({ items, onAdd }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState();
 
-  const itemsArrayCount = items.length;
-  const pageSize = 2;
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory]);
+
+  const pageSize = 4;
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  const userCrop = paginate(items, currentPage, pageSize);
+  const filteredItems = selectedCategory
+    ? items.filter((item) => item.brand === selectedCategory)
+    : items;
+
+  const userCrop = paginate(filteredItems, currentPage, pageSize);
+  const itemsArrayCount = filteredItems.length;
+
+  const handleSelectCategory = (category) => {
+    console.log("category: " + category);
+    setSelectedCategory(category);
+  };
+  const handleClearFilter = () => {
+    setSelectedCategory();
+  };
   return (
     <div className="m-4">
       <h1>Беспроводные наушники</h1>
-      <Filtration />
+      <div
+        style={{
+          display: "flex",
+          marginBottom: "30px",
+          maxWidth: "1200px",
+          justifyContent: "space-between"
+        }}
+      >
+        <CategoriesList
+          items={items}
+          selectedCategory={selectedCategory}
+          onSelectCatagory={handleSelectCategory}
+        />
+        <button className="btn" onClick={handleClearFilter}>
+          Сброс
+        </button>
+        <SortBar />
+      </div>
       <div className="col-md-12">
         <div
           className="card-group row row-cols-4 g-0"

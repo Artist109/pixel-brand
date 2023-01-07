@@ -14,5 +14,5 @@
 
 .category-item:hover {
   background-color: paleturquoise;
-  transition: all 1s;
+  transition: all 0.5s;
 }

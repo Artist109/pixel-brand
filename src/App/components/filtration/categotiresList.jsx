@@ -1,19 +1,39 @@
 import React from "react";
-// import SortBar from "./sortBar";
+import PropTypes from "prop-types";
 
-const CategoriesList = () => {
+const CategoriesList = ({ items, selectedCategory, onSelectCatagory }) => {
+  // const forUniqItems = [];
+  // items.map((item) => forUniqItems.push(item.brand));
+  // const uniqItems = Array.from(new Set(forUniqItems));
+
   return (
     <div className="categories">
-      <button className="btn category-item" style={{ marginRight: "10px" }}>
-        Xiaomi
-      </button>
-      <button className="btn category-item">Apple</button>
-      <button className="btn category-item">Marshall</button>
-      <button className="btn category-item">Sony</button>
-      <button className="btn category-item">Huawei</button>
-      <button className="btn category-item">Earldom</button>
+      {items.map((item) => {
+        return (
+          <button
+            key={item.id}
+            className={
+              "btn category-item" +
+              (selectedCategory === item.brand ? " btn-primary" : "")
+            }
+            onClick={() => onSelectCatagory(item.brand)}
+          >
+            {item.brand}
+            {/* {uniqItems.forEach((item) => {
+              console.log("item", typeof item, "item.brand", typeof item);
+              return item === item.brand ? item.brand : null;
+            })} */}
+          </button>
+        );
+      })}
     </div>
   );
+};
+
+CategoriesList.propTypes = {
+  items: PropTypes.array,
+  selectedCategory: PropTypes.string,
+  onSelectCatagory: PropTypes.func
 };
 
 export default CategoriesList;
