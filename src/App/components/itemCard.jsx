@@ -6,32 +6,49 @@ import Pagination from "./pagination";
 import { paginate } from "../utils/paginate";
 import SortBar from "./filtration/sortBar";
 import CategoriesList from "./filtration/categotiresList";
+import { ITEMS_URL } from "../utils/constants/itemsUrl";
+import { fetchData } from "../utils/fetchData";
 
 const ItemCard = ({ items, onAdd }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState();
+  const [itemsInSelectedCategory, setItemsInSelectedCategory] = useState();
 
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedCategory]);
 
+  const forUniqItems = [];
+  items.map((item) => forUniqItems.push(item.brand));
+  const uniqBrands = Array.from(new Set(forUniqItems));
+
   const pageSize = 4;
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    // useEffect(() => {
+    //   const res = fetchData(`${ITEMS_URL}?_page=${currentPage}&_limit=$`);
+    //   res.then((data) => setItems(data));
+    // }, []);
   };
-
-  const filteredItems = selectedCategory
-    ? items.filter((item) => item.brand === selectedCategory)
-    : items;
-
-  const userCrop = paginate(filteredItems, currentPage, pageSize);
-  const itemsArrayCount = filteredItems.length;
 
   const handleSelectCategory = (category) => {
-    console.log("category: " + category);
     setSelectedCategory(category);
+    const res = fetchData(`${ITEMS_URL}?brand=${category}`);
+    res.then((data) => setItemsInSelectedCategory(data));
   };
+
+  const userCrop = paginate(
+    itemsInSelectedCategory || items,
+    currentPage,
+    pageSize
+  );
+
+  const itemsArrayCount = itemsInSelectedCategory
+    ? itemsInSelectedCategory.length
+    : items.length;
+
   const handleClearFilter = () => {
+    setItemsInSelectedCategory(items);
     setSelectedCategory();
   };
   return (
@@ -46,13 +63,15 @@ const ItemCard = ({ items, onAdd }) => {
         }}
       >
         <CategoriesList
-          items={items}
+          uniqBrands={uniqBrands}
           selectedCategory={selectedCategory}
           onSelectCatagory={handleSelectCategory}
         />
-        <button className="btn" onClick={handleClearFilter}>
-          Сброс
-        </button>
+        {selectedCategory && (
+          <button className="btn" onClick={handleClearFilter}>
+            Сброс
+          </button>
+        )}
         <SortBar />
       </div>
       <div className="col-md-12">

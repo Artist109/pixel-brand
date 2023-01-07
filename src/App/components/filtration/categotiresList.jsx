@@ -1,28 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CategoriesList = ({ items, selectedCategory, onSelectCatagory }) => {
-  // const forUniqItems = [];
-  // items.map((item) => forUniqItems.push(item.brand));
-  // const uniqItems = Array.from(new Set(forUniqItems));
-
+const CategoriesList = ({ uniqBrands, selectedCategory, onSelectCatagory }) => {
   return (
     <div className="categories">
-      {items.map((item) => {
+      {uniqBrands.map((brand) => {
         return (
           <button
-            key={item.id}
+            key={brand}
             className={
               "btn category-item" +
-              (selectedCategory === item.brand ? " btn-primary" : "")
+              (selectedCategory === brand ? " btn-primary" : "")
             }
-            onClick={() => onSelectCatagory(item.brand)}
+            onClick={() => onSelectCatagory(brand)}
           >
-            {item.brand}
-            {/* {uniqItems.forEach((item) => {
-              console.log("item", typeof item, "item.brand", typeof item);
-              return item === item.brand ? item.brand : null;
-            })} */}
+            {brand}
           </button>
         );
       })}
@@ -31,7 +23,7 @@ const CategoriesList = ({ items, selectedCategory, onSelectCatagory }) => {
 };
 
 CategoriesList.propTypes = {
-  items: PropTypes.array,
+  uniqBrands: PropTypes.array,
   selectedCategory: PropTypes.string,
   onSelectCatagory: PropTypes.func
 };
