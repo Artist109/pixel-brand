@@ -13,6 +13,12 @@ const ItemCard = ({ items, onAdd }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState();
   const [itemsInSelectedCategory, setItemsInSelectedCategory] = useState();
+  // const [sortItems, setSortItems] = useState();
+  const pageSize = 2;
+  const [testPage, setTestPage] = useState(() => {
+    const res = fetchData(`${ITEMS_URL}?_page=${1}&_limit=${pageSize}`);
+    res.then((data) => setTestPage(data));
+  });
 
   useEffect(() => {
     setCurrentPage(1);
@@ -22,13 +28,12 @@ const ItemCard = ({ items, onAdd }) => {
   items.map((item) => forUniqItems.push(item.brand));
   const uniqBrands = Array.from(new Set(forUniqItems));
 
-  const pageSize = 4;
   const handlePageChange = (page) => {
+    console.log("page", page);
+    const res = fetchData(`${ITEMS_URL}?_page=${page}&_limit=${pageSize}`);
+    res.then((data) => setTestPage(data));
     setCurrentPage(page);
-    // useEffect(() => {
-    //   const res = fetchData(`${ITEMS_URL}?_page=${currentPage}&_limit=$`);
-    //   res.then((data) => setItems(data));
-    // }, []);
+    console.log(testPage, "testPage");
   };
 
   const handleSelectCategory = (category) => {
@@ -51,6 +56,11 @@ const ItemCard = ({ items, onAdd }) => {
     setItemsInSelectedCategory(items);
     setSelectedCategory();
   };
+
+  const handleSortItems = (order) => {
+    order === "asc" ? console.log("asc", order) : console.log("desc", order);
+  };
+
   return (
     <div className="m-4">
       <h1>Беспроводные наушники</h1>
@@ -72,7 +82,7 @@ const ItemCard = ({ items, onAdd }) => {
             Сброс
           </button>
         )}
-        <SortBar />
+        <SortBar handleSortItems={handleSortItems} />
       </div>
       <div className="col-md-12">
         <div
@@ -106,11 +116,13 @@ const ItemCard = ({ items, onAdd }) => {
                       className="card-text"
                       style={{ textDecoration: "line-through" }}
                     >
-                      {item.price} ₽
+                      {item.oldPrice} ₽
                     </p>
-                    <p className="card-text">{item.newPrice} ₽</p>
+                    <p className="card-text">{item.price} ₽</p>
                     <p className="card-text">
-                      <small className="text-muted">Курьером 28 декабря</small>
+                      <small className="text-muted">
+                        Курьером до {items.delivery}
+                      </small>
                     </p>
                     <a
                       href="#"
