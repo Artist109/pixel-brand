@@ -10,6 +10,7 @@ import ItemPage from "./App/components/itemPage";
 import ItemsList from "./App/components/itemsList";
 import About from "./App/layouts/about";
 import Home from "./App/layouts/home";
+import Loader from "./App/components/loader";
 
 function App() {
   const [items, setItems] = useState();
@@ -38,40 +39,44 @@ function App() {
     console.log(itemCount);
   };
 
-  return (
-    <>
-      <Header />
-      <Breadcrumbs />
-      <Switch>
-        <Route path="/" exact component={Home}></Route>
-        <Route path="/catalog/:itemId">
-          {(props) => (
-            <ItemPage
-              {...props}
-              items={items}
-              itemsInCart={itemsInCart}
-              itemCount={itemCount}
-              onAdd={handleAddToCart}
-              onIncrement={handleItemIncrement}
-              onDecrement={handleItemDecrement}
-            />
-          )}
-        </Route>
-        <Route path="/catalog/">
-          {(props) => (
-            <ItemsList
-              {...props}
-              items={items}
-              itemsInCart={itemsInCart}
-              onAdd={handleAddToCart}
-            />
-          )}
-        </Route>
-        <Route path="/about" component={About}></Route>
-        <Redirect to="/" exact />
-      </Switch>
-    </>
-  );
+  if (items) {
+    return (
+      <>
+        <Header />
+        <Breadcrumbs />
+        <Switch>
+          <Route path="/" exact component={Home}></Route>
+          <Route path="/catalog/:itemId">
+            {(props) => (
+              <ItemPage
+                {...props}
+                items={items}
+                itemsInCart={itemsInCart}
+                itemCount={itemCount}
+                onAdd={handleAddToCart}
+                onIncrement={handleItemIncrement}
+                onDecrement={handleItemDecrement}
+              />
+            )}
+          </Route>
+          <Route path="/catalog/">
+            {(props) => (
+              <ItemsList
+                {...props}
+                items={items}
+                itemsInCart={itemsInCart}
+                onAdd={handleAddToCart}
+              />
+            )}
+          </Route>
+          <Route path="/about" component={About}></Route>
+          <Redirect to="/" exact />
+        </Switch>
+      </>
+    );
+  } else {
+    <Loader />;
+  }
 }
 
 export default App;

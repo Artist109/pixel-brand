@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ItemCounter from "./itemCounter";
+import { Link } from "react-router-dom";
 
 const ItemPage = ({
   match,
@@ -11,7 +12,6 @@ const ItemPage = ({
   onIncrement,
   onDecrement
 }) => {
-  console.log("1itemsInCart", itemsInCart);
   const itemId = match.params.itemId;
 
   if (items) {
@@ -37,13 +37,17 @@ const ItemPage = ({
                 Бренд: <span>{item.brand}</span>
               </p>
               <p>
-                Цена:{" "}
-                <span style={{ textDecoration: "line-through" }}>
-                  {item.price}
-                </span>
-                <span style={{ fontSize: "24px", fontWeight: "bold" }}>
+                Цена: <span>{item.price}</span>
+                <span
+                  style={{
+                    marginLeft: "10px",
+                    fontSize: "24px",
+                    fontWeight: "bold",
+                    textDecoration: "line-through"
+                  }}
+                >
                   {" "}
-                  {item.newPrice}
+                  {item.oldPrice}
                 </span>
               </p>
               <ItemCounter
@@ -56,6 +60,9 @@ const ItemPage = ({
                   onDecrement
                 }}
               />
+              <Link className="btn" to={"/catalog/"}>
+                В каталог
+              </Link>
             </div>
           </div>
           <div className="col-md-8" style={{ marginLeft: "50px" }}>
@@ -94,7 +101,8 @@ ItemPage.propTypes = {
   onAdd: PropTypes.func.isRequired,
   itemCount: PropTypes.number.isRequired,
   onIncrement: PropTypes.func.isRequired,
-  onDecrement: PropTypes.func.isRequired
+  onDecrement: PropTypes.func.isRequired,
+  onGoToCatalog: PropTypes.func
 };
 
 export default ItemPage;
