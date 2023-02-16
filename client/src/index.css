@@ -1,0 +1,15 @@
+html[data-theme="light"] {
+  --body-background-color: #ffffff;
+  --body-text-color: #000000 !important;
+}
+
+html[data-theme="dark"] {
+  --body-background-color: rgb(0 0 0 / 85%);
+  --body-text-color: #ffffff !important;
+
+  --form-background-radius: #4c4c4c;
+
+  --input-background-color: #949494;
+
+  --formButton-background-color: #2a6187;
+}
